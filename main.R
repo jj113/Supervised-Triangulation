@@ -27,7 +27,7 @@ o_tfs = sup_fun[[1]]
 
 b.basis = sup_fun[[3]]; b.scores = sup_fun[[4]]; tarea = sup_fun[[5]]
 
-score_sup = t(o_tfs) %*% ((b.basis%*%t(b.scores))*tarea)
+score_sup = t(o_tfs) %*% (b.basis%*%t(b.scores))
 
 if(npc == 2){
   score_sup = cbind(score_sup[1,], score_sup[2,])
@@ -56,7 +56,7 @@ est = bernstein(Y = test_dat.id$Z1, V.est = V.est, Tr.est = Tr.est, d.est = d.es
                 lambda = lambda)
 b.basis.test = est[[1]]; b.scores.test = t(est[[2]]); tarea.test = est[[4]]
 
-score_sup_test = t(o_tfs) %*% ((b.basis.test%*%t(b.scores.test))*tarea.test)
+score_sup_test = t(o_tfs) %*% ((b.basis.test%*%t(b.scores.test)))
 
 if(npc == 2){
     score_sup_test = cbind(score_sup_test[1,], score_sup_test[2,])
