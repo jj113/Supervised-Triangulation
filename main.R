@@ -25,12 +25,12 @@ sup_fun = sfpca_img(type = "bernstein", Y = train_dat.id$Z1, train_dat.id = trai
   
 o_tfs = sup_fun[[1]]
 
-b.basis = sup_fun[[3]]; b.scores = sup_fun[[4]]; tarea = sup_fun[[5]]
+b.basis = as.matrix(sup_fun[[3]]); b.scores = as.matrix(sup_fun[[4]])
 
 score_sup = t(o_tfs) %*% (b.basis%*%t(b.scores))
 
 if(npc == 2){
-  score_sup = cbind(score_sup[1,], score_sup[2,])
+  score_sup = t(score_sup)
 }else{
   score_sup = cbind(score_sup[1,])
 }
@@ -54,12 +54,13 @@ fitted_obj = coxph(fmla, data = tdat.id, x = T, y = T)
   
 est = bernstein(Y = test_dat.id$Z1, V.est = V.est, Tr.est = Tr.est, d.est = d.est, r = r, Z = Z,
                 lambda = lambda)
-b.basis.test = est[[1]]; b.scores.test = t(est[[2]]); tarea.test = est[[4]]
+
+b.basis.test = as.matrix(est[[1]]); b.scores.test = as.matrix(t(est[[2]]))
 
 score_sup_test = t(o_tfs) %*% ((b.basis.test%*%t(b.scores.test)))
 
 if(npc == 2){
-    score_sup_test = cbind(score_sup_test[1,], score_sup_test[2,])
+    score_sup_test = t(score_sup_test)
 }else{
     score_sup_test = cbind(score_sup_test[1,])
 }
@@ -77,7 +78,7 @@ surv.prob = predict(fitted_obj, newdata = test_dat.id)
 Surv.train = Surv(tdat.id$time, tdat.id$event)
 Surv.test = Surv(test_dat.id$time, test_dat.id$event)
   
-times = seq(0.1, 15, by = 0.1)
+times = seq(0, 15, by = 0.1)
 
 #---- prediction accuracy -----#
 # cumulative AUC 
