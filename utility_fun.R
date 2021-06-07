@@ -131,8 +131,7 @@ sfpca_img = function(type = "bernstein", Y , train_dat.id, theta, lambda, npc, V
     return(YX)
   }
   
-  U =theta/length(train_y)*W%*%S%*%t(S)%*%W+(1-theta)*MM/(length(train_y)^2) 
-  G = W 
+  U =theta/length(train_y)*W%*%S%*%t(S)%*%W+(1-theta)*MM/(length(train_y)^2); G = W 
   halfG_inv  = sqrM(G)
   tM = t(halfG_inv)%*%U%*%halfG_inv
   eigen_res = eigen(tM) 
