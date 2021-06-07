@@ -1,6 +1,6 @@
 # Supervised-Triangulation
 
-main.R : main function to carry out the computation for 2D supervised FPCA with triangulation
+main.R : main function to carry out the computation for 2D supervised FPCA over triangulation
 
 utility_fun.R : functions that are sourced into the main function 
 
