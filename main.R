@@ -23,7 +23,7 @@ sup_fun = sfpca_img(type = "bernstein", Y = train_dat.id$Z1, train_dat.id = trai
                     theta = theta, lambda = lambda, npc = npc, V.est = V.est, Tr.est = Tr.est, d.est = d.est, 
                     r = r, Z = Z, ncr = ncr)
   
-o_tfs = sup_fun[[1]]
+o_tfs = as.matrix(sup_fun[[1]])
 
 b.basis = as.matrix(sup_fun[[3]]); b.scores = as.matrix(sup_fun[[4]])
 
