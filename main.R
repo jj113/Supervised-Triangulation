@@ -3,7 +3,7 @@ library(pec);library(fda);library(survAUC);library(Triangulation);library(BPST)
 
 source("utility_fun.R")
 
-theta = 0 # an example for a pre-specified theta (needs to be tuned)
+theta = 0.01 # an example for a pre-specified theta (needs to be tuned)
 npc = 2 # number of basis 
 ncr = 40 # dimension of the simulation images
 lambda = c(0, 1, 10, 10^2, 10^3, 10^6) # tunning parameter for bernstein
